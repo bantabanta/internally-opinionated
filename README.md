@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Internally Opinionated Project Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the final project for the [Udacity React Nanodegree Program](https://www.udacity.com/course/react-nanodegree--nd019). The design concept is a web app allowing company employees to log in and answer questions created by other employees or create questions which their colleagues can answer. An employee can only see the current results of polls (questions) they have answered. A leaderboard shows the top participant; the employee with the most questions asked and answered.
 
-## Available Scripts
+The goal of the project is to demonstrate an understanding of the fundamentals of React and Redux by building a React-based SPA (single-page application).
 
-In the project directory, you can run:
+Code testing was implemented using [Jest](https://jestjs.io/).
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This project requires Node.js. If you do not have it installed on your machine you can find it [here](https://nodejs.org/en/).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Dependencies and Usage
 
-### `npm test`
+git clone the project and cd into it:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+git clone https://github.com/bantabanta/internally-opinionated.git
+cd internally-opinionated
+```
 
-### `npm run build`
+Install npm dependencies:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Run the app in development mode:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm start
+```
 
-### `npm run eject`
+You should now see the interactive webapp in your browser. If you don't, simply navigate to [http://localhost:3000/](http://localhost:3000).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Create React App
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebook/create-react-app/blob/main/packages/cra-template/template/README.md).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Starter Code
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+As the goal of this project was to gain a better understanding of React, some starter code was used. The only provided starter code is the `_DATA.js` file which represents a fake database of users questions, as well as methods that let you access the data.
