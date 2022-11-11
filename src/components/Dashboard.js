@@ -3,7 +3,9 @@ import PollCard from "./PollCard";
 import Login from "./Login";
 
 const Dashboard = (props) => {
-  // console.log(props.authedUser);
+  // console.group("Dashboard Props");
+  // console.log(props);
+  // console.groupEnd();
   return (
     <div>
       <h3>Questions</h3>
