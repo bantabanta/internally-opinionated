@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 const Navbar = (props) => {
-  console.log(props);
-  // TODO: Add AuthedUser display
+  const { users, authedUser } = props;
+
+  // console.group("Navbar Props");
+  // console.log(props);
+  // console.groupEnd();
+
   return (
     props.authedUser !== null && (
       <nav className="nav">
@@ -19,11 +24,18 @@ const Navbar = (props) => {
           <li>
             <Link to="/404">404 Page</Link>
           </li>
-          <li className="user">Username</li>
+          <li className="user">{users[authedUser].name}</li>
         </ul>
       </nav>
     )
   );
 };
 
-export default Navbar;
+const mapStateToProps = ({ authedUser, users }) => {
+  return {
+    authedUser,
+    users,
+  };
+};
+
+export default connect(mapStateToProps)(Navbar);

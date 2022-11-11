@@ -6,11 +6,11 @@ const Login = (props) => {
   const [value, setValue] = useState("Select a User...");
   const disabled = value === "Select a User..." ? true : false;
 
-  console.group("Login Props");
-  console.log(props);
-  console.log("value");
-  console.log(value);
-  console.groupEnd();
+  // console.group("Login Props");
+  // console.log(props);
+  // console.log("value");
+  // console.log(value);
+  // console.groupEnd();
 
   const handleSubmit = (e) => {
     e.preventDefault();
