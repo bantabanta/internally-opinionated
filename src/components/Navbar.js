@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { setAuthedUser } from "../actions/authedUser";
 
 const Navbar = (props) => {
   const { users, authedUser } = props;
@@ -7,6 +8,11 @@ const Navbar = (props) => {
   // console.group("Navbar Props");
   // console.log(props);
   // console.groupEnd();
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    props.dispatch(setAuthedUser(null));
+  };
 
   return (
     props.authedUser !== null && (
@@ -25,6 +31,7 @@ const Navbar = (props) => {
             <Link to="/404">404 Page</Link>
           </li>
           <li className="user">{users[authedUser].name}</li>
+          <button onClick={handleLogout}>Log Out</button>
         </ul>
       </nav>
     )
