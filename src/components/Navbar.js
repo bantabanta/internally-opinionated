@@ -15,27 +15,32 @@ const Navbar = (props) => {
   };
 
   return (
-    props.authedUser !== null && (
-      <nav className="nav">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
+    // props.authedUser !== null && (
+    <nav className="nav">
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/add">New Poll</Link>
+        </li>
+        <li>
+          <Link to="/leaderboard">Leaderboard</Link>
+        </li>
+        <li>
+          <Link to="/404">404 Page</Link>
+        </li>
+        {/* <li className="user">{users[authedUser].name}</li> */}
+        {props.authedUser !== null && (
+          <li className="user">
+            {users[authedUser].name}
+            <button onClick={handleLogout}>Log Out</button>
           </li>
-          <li>
-            <Link to="/add">Create a Question</Link>
-          </li>
-          <li>
-            <Link to="/leaderboard">Leaderboard</Link>
-          </li>
-          <li>
-            <Link to="/404">404 Page</Link>
-          </li>
-          <li className="user">{users[authedUser].name}</li>
-          <button onClick={handleLogout}>Log Out</button>
-        </ul>
-      </nav>
-    )
+        )}
+      </ul>
+    </nav>
   );
+  // );
 };
 
 const mapStateToProps = ({ authedUser, users }) => {

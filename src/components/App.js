@@ -19,8 +19,8 @@ function App(props) {
   return (
     <Fragment>
       <div className="container">
-        <Navbar authedUser={props.authedUser} />
-        {props.noUser === true ? (
+        <Navbar />
+        {props.authedUser === null ? (
           <Login />
         ) : (
           <Routes>
@@ -38,7 +38,6 @@ function App(props) {
 }
 
 const mapStateToProps = ({ authedUser }) => ({
-  noUser: authedUser === null,
   authedUser,
 });
 

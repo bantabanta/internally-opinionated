@@ -12,6 +12,8 @@ const Login = (props) => {
   // console.log(value);
   // console.groupEnd();
 
+  //TODO: styling
+
   const handleSubmit = (e) => {
     e.preventDefault();
     props.dispatch(setAuthedUser(value));
