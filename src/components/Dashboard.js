@@ -1,21 +1,15 @@
 import { connect } from "react-redux";
+import PollCard from "./PollCard";
+import Login from "./Login";
 
 const Dashboard = (props) => {
-  console.log(props);
+  // console.log(props.authedUser);
   return (
     <div>
-      <h3>Questions answered</h3>
+      <h3>Questions</h3>
       <ul className="dashboard-list">
         {props.questionIds.map((id) => (
-          // <li key={id}>{/* <Tweet id={id} /> */}</li>
-          <li key={id}>{`Question ID: ${id}`}</li>
-        ))}
-      </ul>
-      <h3>Questions unanswered</h3>
-      <ul className="dashboard-list">
-        {props.questionIds.map((id) => (
-          // <li key={id}>{/* <Tweet id={id} /> */}</li>
-          <li key={id}>{`Question ID: ${id}`}</li>
+          <li key={id}>{<PollCard id={id} />}</li>
         ))}
       </ul>
     </div>
@@ -23,10 +17,13 @@ const Dashboard = (props) => {
 };
 
 // state needed: all the users, the authedUser, and the questions
-const mapStateToProps = ({ questions }) => ({
-  questionIds: Object.keys(questions).sort(
-    (a, b) => questions[b].timestamp - questions[a].timestamp
-  ),
-});
+const mapStateToProps = ({ questions, authedUser }) => {
+  return {
+    authedUser,
+    questionIds: Object.keys(questions).sort(
+      (a, b) => questions[b].timestamp - questions[a].timestamp
+    ),
+  };
+};
 
 export default connect(mapStateToProps)(Dashboard);
