@@ -15,18 +15,22 @@ const Dashboard = (props) => {
 
   return (
     <div className="content-wrapper">
+      <div className="welcome">
+        <h2>Hey there {props.users[props.authedUser].name}!</h2>
+        <p>Vote on a poll or check out results from a previous vote</p>
+      </div>
       <div className="bloc-tabs">
         <button
           className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(1)}
         >
-          Unanswered Polls
+          Cast a Vote
         </button>
         <button
           className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(2)}
         >
-          Poll Results
+          See Results
         </button>
       </div>
 
@@ -34,7 +38,7 @@ const Dashboard = (props) => {
         <div
           className={toggleState === 1 ? "content  active-content" : "content"}
         >
-          <p>Click a poll to vote</p>
+          {/* <p>Click a poll to vote</p> */}
           <ul className="poll-list">
             {props.unansweredQuestions.map((question) => (
               <li key={question.id}>{<PollCardHome id={question.id} />}</li>
@@ -45,7 +49,7 @@ const Dashboard = (props) => {
         <div
           className={toggleState === 2 ? "content  active-content" : "content"}
         >
-          <p>Click a poll to see result</p>
+          {/* <p>Click a poll to see result</p> */}
           <ul className="poll-list">
             {props.answeredQuestions.map((question) => (
               <li key={question.id}>{<PollCardHome id={question.id} />}</li>
@@ -71,6 +75,8 @@ const mapStateToProps = ({ questions, authedUser, users }) => {
   return {
     answeredQuestions,
     unansweredQuestions,
+    users,
+    authedUser,
   };
 };
 

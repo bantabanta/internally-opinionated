@@ -15,41 +15,35 @@ const Navbar = (props) => {
   };
 
   return (
-    // props.authedUser !== null && (
     <nav className="nav">
-      <h1 className="logo">IO</h1>
-      <ul>
-        <li>
-          <Link to="/">
-            <span className="num">01.</span> Home
-          </Link>
-        </li>
-        <li>
-          <Link to="/add">
-            <span className="num">02.</span> New Poll
-          </Link>
-        </li>
-        <li>
-          <Link to="/leaderboard">
-            <span className="num">03.</span> Leaderboard
-          </Link>
-        </li>
-        <li>
-          <Link to="/404">
-            <span className="num">| 404 |</span>
-          </Link>
-        </li>
-        {/* <li className="user">{users[authedUser].name}</li> */}
-      </ul>
+      <Link to="/" className="logo">
+        <h1>I O</h1>
+      </Link>
       {props.authedUser !== null && (
-        <div className="user">
-          {users[authedUser].name}
-          <button onClick={handleLogout}>Log Out</button>
-        </div>
+        <ul>
+          {/* <li>
+            <Link to="/">
+              <span className="num">01.</span> Home
+            </Link>
+          </li> */}
+          <li>
+            <Link to="/add">
+              <span className="num">01.</span> New Poll
+            </Link>
+          </li>
+          <li>
+            <Link to="/leaderboard">
+              <span className="num">02.</span> Leaders
+            </Link>
+          </li>
+          {/* {props.authedUser !== null && ( */}
+          <li className="logout">
+            <button onClick={handleLogout}>Log Out</button>
+          </li>
+        </ul>
       )}
     </nav>
   );
-  // );
 };
 
 const mapStateToProps = ({ authedUser, users }) => {

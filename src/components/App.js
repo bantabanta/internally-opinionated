@@ -18,8 +18,8 @@ function App(props) {
 
   return (
     <Fragment>
+      <Navbar />
       <div className="container">
-        <Navbar />
         {props.authedUser === null ? (
           <Login />
         ) : (

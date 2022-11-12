@@ -11,9 +11,7 @@ const PollCardHome = (props) => {
           {users[question.author] === users[authedUser] ? (
             <p>{`You asked your colleagues if they would rather:`}</p>
           ) : (
-            <p>{`${
-              users[question.author].name
-            } would like to know if you would rather:`}</p>
+            <p>{`${users[question.author].name} asked if you would rather:`}</p>
           )}
           <h3>A: {question.optionOne.text}</h3>
           <p>or..</p>
