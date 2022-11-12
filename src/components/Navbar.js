@@ -17,27 +17,36 @@ const Navbar = (props) => {
   return (
     // props.authedUser !== null && (
     <nav className="nav">
+      <h1 className="logo">IO</h1>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">
+            <span className="num">01.</span> Home
+          </Link>
         </li>
         <li>
-          <Link to="/add">New Poll</Link>
+          <Link to="/add">
+            <span className="num">02.</span> New Poll
+          </Link>
         </li>
         <li>
-          <Link to="/leaderboard">Leaderboard</Link>
+          <Link to="/leaderboard">
+            <span className="num">03.</span> Leaderboard
+          </Link>
         </li>
         <li>
-          <Link to="/404">404 Page</Link>
+          <Link to="/404">
+            <span className="num">| 404 |</span>
+          </Link>
         </li>
         {/* <li className="user">{users[authedUser].name}</li> */}
-        {props.authedUser !== null && (
-          <li className="user">
-            {users[authedUser].name}
-            <button onClick={handleLogout}>Log Out</button>
-          </li>
-        )}
       </ul>
+      {props.authedUser !== null && (
+        <div className="user">
+          {users[authedUser].name}
+          <button onClick={handleLogout}>Log Out</button>
+        </div>
+      )}
     </nav>
   );
   // );

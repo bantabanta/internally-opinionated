@@ -14,16 +14,16 @@ const Dashboard = (props) => {
   };
 
   return (
-    <div className="tabs-container">
+    <div className="content-wrapper">
       <div className="bloc-tabs">
         <button
-          className={toggleState === 1 ? "tabs active-tabs-polls" : "tabs"}
+          className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(1)}
         >
           Unanswered Polls
         </button>
         <button
-          className={toggleState === 2 ? "tabs active-tabs-results" : "tabs"}
+          className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(2)}
         >
           Poll Results

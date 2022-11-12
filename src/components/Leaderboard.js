@@ -1,5 +1,5 @@
 const Leaderboard = () => {
-  return <div>Leaderboard</div>;
+  return <div className="content-wrapper">Leaderboard</div>;
 };
 
 export default Leaderboard;

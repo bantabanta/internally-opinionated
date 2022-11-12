@@ -35,10 +35,10 @@ const Login = (props) => {
   });
 
   return (
-    <div>
+    <div className="content-wrapper">
       <form onSubmit={handleSubmit}>
-        <h2>Welcome to Internally Opinionated!</h2>
-        <h4>Select a user to log in as them..</h4>
+        <h1>Welcome to Internally Opinionated!</h1>
+        <h3>Sign In</h3>
         <select value={value} onChange={handleChange}>
           <option>Select a User...</option>
           {userDropdown}

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 const PollCardQuestion = (props) => {
   const { users, question, authedUser } = props;
   return (
-    <div>
+    <div className="content-wrapper">
       <h2>Poll Question:</h2>
       <div className="poll">
         <div className="poll-info">
