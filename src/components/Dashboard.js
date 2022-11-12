@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { useState } from "react";
 import PollCardHome from "./PollCardHome";
 
 const Dashboard = (props) => {
@@ -6,20 +7,52 @@ const Dashboard = (props) => {
   // console.log(props);
   // console.groupEnd();
 
+  const [toggleState, setToggleState] = useState(1);
+
+  const toggleTab = (index) => {
+    setToggleState(index);
+  };
+
   return (
-    <div>
-      <h3>Answered Questions</h3>
-      <ul className="dashboard-list">
-        {props.answeredQuestions.map((question) => (
-          <li key={question.id}>{<PollCardHome id={question.id} />}</li>
-        ))}
-      </ul>
-      <h3>Unanswered Questions</h3>
-      <ul className="dashboard-list">
-        {props.unansweredQuestions.map((question) => (
-          <li key={question.id}>{<PollCardHome id={question.id} />}</li>
-        ))}
-      </ul>
+    <div className="tabs-container">
+      <div className="bloc-tabs">
+        <button
+          className={toggleState === 1 ? "tabs active-tabs-polls" : "tabs"}
+          onClick={() => toggleTab(1)}
+        >
+          Unanswered Polls
+        </button>
+        <button
+          className={toggleState === 2 ? "tabs active-tabs-results" : "tabs"}
+          onClick={() => toggleTab(2)}
+        >
+          Poll Results
+        </button>
+      </div>
+
+      <div className="content-tabs">
+        <div
+          className={toggleState === 1 ? "content  active-content" : "content"}
+        >
+          <p>Click a poll to vote</p>
+          <ul className="poll-list">
+            {props.unansweredQuestions.map((question) => (
+              <li key={question.id}>{<PollCardHome id={question.id} />}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div
+          className={toggleState === 2 ? "content  active-content" : "content"}
+        >
+          <p>Click a poll to see result</p>
+          <ul className="poll-list">
+            {props.answeredQuestions.map((question) => (
+              <li key={question.id}>{<PollCardHome id={question.id} />}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };

@@ -17,9 +17,9 @@ const withRouter = (Component) => {
 const PollPage = (props) => {
   const { questionAnswered, id } = props;
 
-  console.group("PollPage Props");
-  console.log(typeof questionAnswered);
-  console.groupEnd();
+  // console.group("PollPage Props");
+  // console.log(typeof questionAnswered);
+  // console.groupEnd();
 
   return (
     <div>
