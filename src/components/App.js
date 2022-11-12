@@ -5,7 +5,7 @@ import Dashboard from "./Dashboard";
 import PollPage from "./PollPage";
 import Error404 from "./Error404";
 import Login from "./Login";
-import AddQuestion from "./AddQuestion";
+import AddPoll from "./AddPoll";
 import Leaderboard from "./Leaderboard";
 import Navbar from "./Navbar";
 import { Routes, Route, Router } from "react-router-dom";
@@ -25,9 +25,9 @@ function App(props) {
         ) : (
           <Routes>
             <Route path="/" exact element={<Dashboard />} />
-            <Route path="/add" exact element={<AddQuestion />} />
+            <Route path="/add" exact element={<AddPoll />} />
             <Route path="/question/:id" exact element={<PollPage />} />
-            <Route path="/404" exact element={<Error404 />} />
+            {/* <Route path="/404" exact element={<Error404 />} /> */}
             <Route element={<Error404 />} />
             <Route path="/leaderboard" exact element={<Leaderboard />} />
           </Routes>
