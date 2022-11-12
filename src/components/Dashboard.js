@@ -1,31 +1,47 @@
 import { connect } from "react-redux";
 import PollCard from "./PollCard";
-import Login from "./Login";
 
 const Dashboard = (props) => {
-  // console.group("Dashboard Props");
-  // console.log(props);
-  // console.groupEnd();
+  console.group("Dashboard Props");
+  console.log(props);
+  console.groupEnd();
 
   return (
     <div>
-      <h3>Questions</h3>
+      <h3>Answered Questions</h3>
       <ul className="dashboard-list">
-        {props.questionIds.map((id) => (
-          <li key={id}>{<PollCard id={id} />}</li>
+        {props.answeredQuestions.map((question) => (
+          <li key={question.id}>{<PollCard id={question.id} />}</li>
+        ))}
+      </ul>
+      <h3>Unanswered Questions</h3>
+      <ul className="dashboard-list">
+        {props.unansweredQuestions.map((question) => (
+          <li key={question.id}>{<PollCard id={question.id} />}</li>
         ))}
       </ul>
     </div>
   );
 };
 
-// state needed: all the users, the authedUser, and the questions
-const mapStateToProps = ({ questions, authedUser }) => {
+const mapStateToProps = ({ questions, authedUser, users }) => {
+  const answeredIds = Object.keys(users[authedUser].answers);
+
+  // const questionIds = Object.keys(questions).sort(
+  //   (a, b) => questions[b].timestamp - questions[a].timestamp
+  // );
+
+  const answeredQuestions = Object.values(questions) // all question values
+    .filter((question) => answeredIds.includes(question.id)) // filter where answeredIDs includes question ID
+    .sort((a, b) => b.timestamp - a.timestamp); // then sort by time
+
+  const unansweredQuestions = Object.values(questions)
+    .filter((question) => !answeredIds.includes(question.id))
+    .sort((a, b) => b.timestamp - a.timestamp);
+
   return {
-    authedUser,
-    questionIds: Object.keys(questions).sort(
-      (a, b) => questions[b].timestamp - questions[a].timestamp
-    ),
+    answeredQuestions,
+    unansweredQuestions,
   };
 };
 
