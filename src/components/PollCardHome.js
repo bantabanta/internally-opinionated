@@ -1,12 +1,11 @@
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-const Question = (props) => {
+const PollCardHome = (props) => {
   const { users, question, authedUser } = props;
-  console.log(users[authedUser].name);
 
   return (
-    <Link to={`/question/${question.id}`}>
+    <Link to={`/question/${question.id}`} id={question.id}>
       <div className="poll">
         <div className="poll-info">
           {users[question.author] === users[authedUser] ? (
@@ -35,4 +34,4 @@ const mapStateToProps = ({ authedUser, questions, users }, { id }) => {
   };
 };
 
-export default connect(mapStateToProps)(Question);
+export default connect(mapStateToProps)(PollCardHome);
