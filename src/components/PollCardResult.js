@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const PollCardResult = (props) => {
   const { users, question, authedUser } = props;
@@ -23,6 +24,9 @@ const PollCardResult = (props) => {
           </p>
         </div>
       </div>
+      <Link to="/">
+        <button>Return to Home</button>
+      </Link>
     </div>
   );
 };

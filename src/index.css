@@ -27,22 +27,19 @@ a {
   background-color: #0A192E;
   /* margin-bottom: 20px; */
   /* from books search */
-  /* opacity: .9;
-  z-index: 5; */
-  /* position: fixed; */
+  opacity: .9;
+  z-index: 5;
+  position: fixed;
   /* width: 100%; */
-  /* padding: 0 5% 0 5%; */
-  /* top: 0;
+  padding: 0 2% 0 2%;
+  top: 0;
   left: 0;
-  right: 0; */
+  right: 0;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 0 6px rgba(0, 0, 0, 0.23);
   /* end from books */
-  /* width: 100%; */
-
 }
 .nav .logo {
   font-weight: bolder;
-  margin-left: 25px;
   display: flex;
   align-items: center;
   font-size: larger;
@@ -51,13 +48,11 @@ a {
 .nav ul {
   display: flex;
   padding: 0;
+  margin: inherit;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
   text-decoration: none;
-}
-.nav .logout {
-  margin-right: 15px;
 }
 
 .nav .num {
@@ -73,9 +68,6 @@ a {
   border: 1px solid #3cd6c7;
   font-weight: light;
   color: #3cd6c7;
-  /* padding: 5px; */
-  /* border-radius: 15px;
-  border: 1px grey; */
 }
 
 .nav li:first-child {
@@ -122,7 +114,7 @@ input {
   display: flex;
   flex-direction: column;
   position: relative;
-  max-width: 700px;
+  max-width: 500px;
   margin: 25px auto 20px;
 }
 

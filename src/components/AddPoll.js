@@ -42,11 +42,11 @@ const AddPoll = ({ dispatch }) => {
       <div>Would you rather:</div>
       <br></br>
       <form className="new-poll" onSubmit={handleSubmit}>
-        <textarea
-          placeholder="Do Stuff"
+        <input
+          placeholder="Enter option one.."
           value={optionOneText}
           onChange={handleOptionOneChange}
-          className="textarea"
+          className="input"
           maxLength={80}
         />
         <br></br>
@@ -54,11 +54,11 @@ const AddPoll = ({ dispatch }) => {
         <div>OR</div>
         <br></br>
         <br></br>
-        <textarea
-          placeholder="Do Things"
+        <input
+          placeholder="Enter option two.."
           value={optionTwoText}
           onChange={handleOptionTwoChange}
-          className="textarea"
+          className="input"
           maxLength={80}
         />
         <br></br>
