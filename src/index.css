@@ -117,8 +117,8 @@ input {
   display: flex;
   flex-direction: column;
   position: relative;
-  max-width: 500px;
-  margin: 25px auto 20px;
+  max-width: 600px;
+  margin: 115px auto 20px;
 }
 
 .welcome {

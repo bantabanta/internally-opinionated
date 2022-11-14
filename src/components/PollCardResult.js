@@ -55,9 +55,6 @@ const PollCardResult = (props) => {
           <button onClick={handleClick}>Back</button>
         </div>
       </div>
-      <Link to="/">
-        <button>Return to Home</button>
-      </Link>
     </div>
   );
 };
