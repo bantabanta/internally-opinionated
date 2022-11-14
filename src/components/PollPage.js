@@ -1,5 +1,6 @@
 import PollCardQuestion from "./PollCardQuestion";
 import PollCardResult from "./PollCardResult";
+import Error404 from "./Error404";
 import { connect } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
@@ -13,6 +14,8 @@ const withRouter = (Component) => {
 
   return ComponentWithRouterProp;
 };
+
+//is passing correct id to other components, then they fail
 
 const PollPage = (props) => {
   const { questionAnswered, id } = props;
@@ -34,10 +37,12 @@ const PollPage = (props) => {
 
 const mapStateToProps = ({ authedUser, questions, users }, props) => {
   const { id } = props.router.params;
+  const badId = true; //iterate over the question ids to see if it exists
   const questionAnswered = Object.keys(users[authedUser].answers).includes(id);
 
   return {
     id,
+    badId,
     questionAnswered,
   };
 };

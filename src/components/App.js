@@ -8,7 +8,7 @@ import Login from "./Login";
 import AddPoll from "./AddPoll";
 import Leaderboard from "./Leaderboard";
 import Navbar from "./Navbar";
-import { Routes, Route, Router } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 function App(props) {
   // console.group("App Props");
@@ -31,7 +31,8 @@ function App(props) {
             <Route path="/add" exact element={<AddPoll />} />
             <Route path="/question/:id" exact element={<PollPage />} />
             <Route path="/leaderboard" exact element={<Leaderboard />} />
-            <Route path="/404" exact element={<Error404 />} />
+            <Route path="/question/404" exact element={<Error404 />} />
+            <Route path="*" element={<Error404 />} />
           </Routes>
         )}
       </div>

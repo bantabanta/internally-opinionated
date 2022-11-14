@@ -1,10 +1,19 @@
 import { connect } from "react-redux";
 import { handleAddAnswer } from "../actions/questions";
-import { useNavigate, Link } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate, Link, route } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const PollCardQuestion = (props) => {
+  const navigate = useNavigate();
   const { users, question, authedUser, dispatch } = props;
+
+  useEffect(() => {
+    if (question === undefined) {
+      console.log("YEWWWW");
+      navigate("/question/404");
+    }
+  }, [question]);
+
   const [selected, setSelected] = useState("");
   const disabled = selected === "";
 
@@ -24,6 +33,12 @@ const PollCardQuestion = (props) => {
       })
     );
   };
+
+  // PollPage will always pass anything after question/
+  if (question === undefined) {
+    console.log("YEWWWW");
+    // navigate("/question/404");
+  }
 
   const handleChange = (e) => {
     const text = e.target.value;

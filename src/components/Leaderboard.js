@@ -11,7 +11,7 @@ const Leaderboard = (props) => {
   return (
     <div className="content-wrapper">
       <div className="welcome">
-        <h1>Leaderboard</h1>
+        <h2>Leaderboard</h2>
         <p>See where you stack up against the opinionated</p>
       </div>
       <ul>
