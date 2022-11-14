@@ -1,9 +1,5 @@
 import { connect } from "react-redux";
-<<<<<<< HEAD
 import { useNavigate } from "react-router-dom";
-=======
-import { Link } from "react-router-dom";
->>>>>>> 6ccfe03a4541c6b90826bad453e63a14d9d1b4c2
 
 const PollCardResult = (props) => {
   const Navigate = useNavigate();
