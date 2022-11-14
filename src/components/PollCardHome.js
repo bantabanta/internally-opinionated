@@ -13,9 +13,9 @@ const PollCardHome = (props) => {
           ) : (
             <p>{`${users[question.author].name} asked if you would rather:`}</p>
           )}
-          <h3>A: {question.optionOne.text}</h3>
+          <h3>{question.optionOne.text}</h3>
           <p>or..</p>
-          <h3>B: {question.optionTwo.text}</h3>
+          <h3>{question.optionTwo.text}</h3>
         </div>
       </div>
     </Link>

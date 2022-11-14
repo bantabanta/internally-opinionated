@@ -4,17 +4,10 @@ import { handleAddQuestion } from "../actions/questions";
 import { useNavigate } from "react-router-dom";
 
 const AddPoll = (props) => {
-  const { dispatch, authedUser } = props;
   const navigate = useNavigate();
+
   const [optionOneText, setOptionOneText] = useState("");
   const [optionTwoText, setOptionTwoText] = useState("");
-
-  // console.group("Add Poll Props");
-  // console.log("opt 1");
-  // console.log(optionOneText);
-  // console.log("opt 2");
-  // console.log(optionTwoText);
-  // console.groupEnd();
 
   const handleOptionOneChange = (e) => {
     const text = e.target.value;
@@ -28,6 +21,8 @@ const AddPoll = (props) => {
     setOptionTwoText(text);
   };
 
+  const { dispatch, authedUser } = props;
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(handleAddQuestion(optionOneText, optionTwoText, authedUser));
@@ -39,40 +34,45 @@ const AddPoll = (props) => {
 
   return (
     <div className="content-wrapper">
-      <h3 className="center">Create A Poll</h3>
-      <div>Would you rather:</div>
-      <br></br>
-      <form className="new-poll" onSubmit={handleSubmit}>
-        <input
-          placeholder="Enter option one.."
-          value={optionOneText}
-          onChange={handleOptionOneChange}
-          className="input"
-          maxLength={80}
-        />
+      <div className="welcome">
+        <h2>Create A Poll</h2>
+        <p>Whats been keeping you up at night?</p>
+      </div>
+      <div className="poll poll-info">
         <br></br>
+        <div>Would my colleagues rather:</div>
         <br></br>
-        <div>OR</div>
-        <br></br>
-        <br></br>
-        <input
-          placeholder="Enter option two.."
-          value={optionTwoText}
-          onChange={handleOptionTwoChange}
-          className="input"
-          maxLength={80}
-        />
-        <br></br>
-        <br></br>
-        {/* {tweetLeft <= 100 && <div className="tweet-length">{tweetLeft}</div>} */}
-        <button
-          className="btn"
-          type="submit"
-          disabled={optionOneText === "" || optionTwoText === ""}
-        >
-          Submit
-        </button>
-      </form>
+        <form className="new-poll" onSubmit={handleSubmit}>
+          <input
+            placeholder="Enter option one.."
+            value={optionOneText}
+            onChange={handleOptionOneChange}
+            className="input"
+            maxLength={80}
+          />
+          <br></br>
+          <br></br>
+          <div>OR</div>
+          <br></br>
+          <input
+            placeholder="Enter option two.."
+            value={optionTwoText}
+            onChange={handleOptionTwoChange}
+            className="input"
+            maxLength={80}
+          />
+          <br></br>
+          <br></br>
+          {/* {tweetLeft <= 100 && <div className="tweet-length">{tweetLeft}</div>} */}
+          <button
+            className="btn"
+            type="submit"
+            disabled={optionOneText === "" || optionTwoText === ""}
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

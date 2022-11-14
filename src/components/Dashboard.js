@@ -16,7 +16,7 @@ const Dashboard = (props) => {
   return (
     <div className="content-wrapper">
       <div className="welcome">
-        <h2>Hey there {props.users[props.authedUser].name}!</h2>
+        <h2>Oh hey there {props.users[props.authedUser].name}!</h2>
         <p>Vote on a poll or check out results from a previous vote</p>
       </div>
       <div className="tabs-wrapper">
@@ -35,10 +35,8 @@ const Dashboard = (props) => {
       </div>
 
       <div className="content-tabs">
-        <div
-          className={activeTab === 1 ? "content  active-content" : "content"}
-        >
-          <ul className="poll-list">
+        <div className={activeTab === 1 ? "content active-content" : "content"}>
+          <ul>
             {props.unansweredQuestions.map((question) => (
               <li key={question.id}>{<PollCardHome id={question.id} />}</li>
             ))}
@@ -48,7 +46,7 @@ const Dashboard = (props) => {
         <div
           className={activeTab === 2 ? "content  active-content" : "content"}
         >
-          <ul className="poll-list">
+          <ul>
             {props.answeredQuestions.map((question) => (
               <li key={question.id}>{<PollCardHome id={question.id} />}</li>
             ))}

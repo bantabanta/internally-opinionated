@@ -11,7 +11,10 @@ import Navbar from "./Navbar";
 import { Routes, Route, Router } from "react-router-dom";
 
 function App(props) {
-  console.log(props);
+  // console.group("App Props");
+  // console.log(props);
+  // console.groupEnd();
+
   useEffect(() => {
     props.dispatch(handleInitialData());
   }, []);

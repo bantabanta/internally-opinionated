@@ -35,7 +35,7 @@ const Login = (props) => {
   });
 
   return (
-    <div className="content-wrapper">
+    <div className="content-wrapper poll">
       <form onSubmit={handleSubmit}>
         <h1>Welcome to Internally Opinionated!</h1>
         <h3>Sign In</h3>
@@ -43,7 +43,11 @@ const Login = (props) => {
           <option>Select a User...</option>
           {userDropdown}
         </select>
-        <input type="submit" value="Log In" disabled={disabled} />
+        <br></br>
+        <br></br>
+        <button disabled={disabled} type="submit">
+          Log In
+        </button>
       </form>
     </div>
   );

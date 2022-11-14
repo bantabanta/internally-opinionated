@@ -15,6 +15,7 @@ a {
 
 .container {
   max-width: 1000px;
+  padding-top: 115px;
   margin: 0 auto;
   background-color: #0B192E;
 }
@@ -62,9 +63,8 @@ a {
 .logout button {
   margin-left: 10px;
   padding: 8px;
-  background-color: #0A192F;
-  background-color: none;
-  border-radius: .2em;
+  background-color: transparent;
+  border-radius: .4em;
   border: 1px solid #3cd6c7;
   font-weight: light;
   color: #3cd6c7;
@@ -84,8 +84,46 @@ li {
   text-decoration: none;
 }
 
-button {
+/* button {
+  margin: 10px;
+  padding: 5px;
   cursor: pointer;
+  background-color: transparent;
+  border-radius: .2em;
+  border: 1px solid #3cd6c7;
+  font-weight: light;
+  color: #3cd6c7;
+} */
+
+button {
+  border: 1px solid #0B192E;
+  border-radius: .4em;
+  background-color: #16a093;
+  color: black;
+  padding: 5px 10px;
+  margin: 10px;
+  letter-spacing: 1.5px;
+  /* box-shadow: 0px 8px 15px rgba(250, 247, 247, 0.1); */
+  /* text-transform: uppercase; */
+}
+
+button:hover {
+  /* border: 1px solid #0099cc; */
+  cursor: pointer;
+  opacity: .9;
+  /* padding: 6px 11px;
+  margin: 9px; */
+}
+
+button:disabled,
+button[disabled]{
+  background-color: #16a093;
+  color: black;
+  border-radius: .4em;
+  opacity: .4;
+  cursor: inherit;
+  padding: 5px 10px;
+  margin: 10px;
 }
 
 input {
@@ -118,7 +156,7 @@ input {
   flex-direction: column;
   position: relative;
   max-width: 600px;
-  margin: 115px auto 20px;
+  margin: 0px auto 20px;
 }
 
 .welcome {
