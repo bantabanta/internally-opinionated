@@ -7,10 +7,10 @@ const Dashboard = (props) => {
   // console.log(props);
   // console.groupEnd();
 
-  const [toggleState, setToggleState] = useState(1);
+  const [activeTab, setActiveTab] = useState(1);
 
-  const toggleTab = (index) => {
-    setToggleState(index);
+  const toggleTab = (tab) => {
+    setActiveTab(tab);
   };
 
   return (
@@ -19,15 +19,15 @@ const Dashboard = (props) => {
         <h2>Hey there {props.users[props.authedUser].name}!</h2>
         <p>Vote on a poll or check out results from a previous vote</p>
       </div>
-      <div className="bloc-tabs">
+      <div className="tabs-wrapper">
         <button
-          className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
+          className={activeTab === 1 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(1)}
         >
           Cast a Vote
         </button>
         <button
-          className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
+          className={activeTab === 2 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(2)}
         >
           See Results
@@ -36,9 +36,8 @@ const Dashboard = (props) => {
 
       <div className="content-tabs">
         <div
-          className={toggleState === 1 ? "content  active-content" : "content"}
+          className={activeTab === 1 ? "content  active-content" : "content"}
         >
-          {/* <p>Click a poll to vote</p> */}
           <ul className="poll-list">
             {props.unansweredQuestions.map((question) => (
               <li key={question.id}>{<PollCardHome id={question.id} />}</li>
@@ -47,9 +46,8 @@ const Dashboard = (props) => {
         </div>
 
         <div
-          className={toggleState === 2 ? "content  active-content" : "content"}
+          className={activeTab === 2 ? "content  active-content" : "content"}
         >
-          {/* <p>Click a poll to see result</p> */}
           <ul className="poll-list">
             {props.answeredQuestions.map((question) => (
               <li key={question.id}>{<PollCardHome id={question.id} />}</li>
@@ -62,14 +60,14 @@ const Dashboard = (props) => {
 };
 
 const mapStateToProps = ({ questions, authedUser, users }) => {
-  const answeredIds = Object.keys(users[authedUser].answers);
+  const answerIds = Object.keys(users[authedUser].answers);
 
-  const answeredQuestions = Object.values(questions) // all question values
-    .filter((question) => answeredIds.includes(question.id)) // filter where answeredIDs includes question ID
-    .sort((a, b) => b.timestamp - a.timestamp); // then sort by time
+  const answeredQuestions = Object.values(questions)
+    .filter((question) => answerIds.includes(question.id))
+    .sort((a, b) => b.timestamp - a.timestamp);
 
   const unansweredQuestions = Object.values(questions)
-    .filter((question) => !answeredIds.includes(question.id))
+    .filter((question) => !answerIds.includes(question.id))
     .sort((a, b) => b.timestamp - a.timestamp);
 
   return {

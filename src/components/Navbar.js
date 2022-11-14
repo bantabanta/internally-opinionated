@@ -21,11 +21,6 @@ const Navbar = (props) => {
       </Link>
       {props.authedUser !== null && (
         <ul>
-          {/* <li>
-            <Link to="/">
-              <span className="num">01.</span> Home
-            </Link>
-          </li> */}
           <li>
             <Link to="/add">
               <span className="num">01.</span> New Poll
