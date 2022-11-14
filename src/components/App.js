@@ -27,6 +27,11 @@ function App(props) {
             <Route path="/" exact element={<Dashboard />} />
             <Route path="/add" exact element={<AddPoll />} />
             <Route path="/question/:id" exact element={<PollPage />} />
+<<<<<<< HEAD
+=======
+            <Route path="/404" exact element={<Error404 />} />
+            <Route element={<Error404 />} />
+>>>>>>> 6ccfe03a4541c6b90826bad453e63a14d9d1b4c2
             <Route path="/leaderboard" exact element={<Leaderboard />} />
           </Routes>
         )}
