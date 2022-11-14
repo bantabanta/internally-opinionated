@@ -1,16 +1,27 @@
 import { connect } from "react-redux";
-// import { handleAddQuestionAnswer } from "../actions/questions";
+import { handleAddAnswer } from "../actions/questions";
 import { useState } from "react";
 
 const PollCardQuestion = (props) => {
   const { users, question, authedUser, dispatch } = props;
-  const [selected, setSelected] = useState("optionOne");
+  const [selected, setSelected] = useState("");
+  const disabled = selected === "";
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(selected);
+    // console.group("Add Answer");
+    // console.log(question.id);
+    // console.log(authedUser);
+    // console.log(selected);
+    // console.groupEnd();
 
-    // dispatch(handleAddQuestionAnswer(question.id, value, authedUser));
+    dispatch(
+      handleAddAnswer({
+        qid: question.id,
+        authedUser,
+        answer: selected,
+      })
+    );
   };
 
   const handleChange = (e) => {
@@ -51,7 +62,9 @@ const PollCardQuestion = (props) => {
               </label>
             </div>
             <br></br>
-            <button type="submit">Submit</button>
+            <button disabled={disabled} type="submit">
+              Submit
+            </button>
           </form>
         </div>
       </div>

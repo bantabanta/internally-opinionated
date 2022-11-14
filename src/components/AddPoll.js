@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { handleAddQuestion } from "../actions/questions";
 import { useNavigate } from "react-router-dom";
 
-const AddPoll = ({ dispatch }) => {
+const AddPoll = (props) => {
+  const { dispatch, authedUser } = props;
   const navigate = useNavigate();
   const [optionOneText, setOptionOneText] = useState("");
   const [optionTwoText, setOptionTwoText] = useState("");
@@ -29,7 +30,7 @@ const AddPoll = ({ dispatch }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(handleAddQuestion(optionOneText, optionTwoText));
+    dispatch(handleAddQuestion(optionOneText, optionTwoText, authedUser));
 
     setOptionOneText("");
     setOptionTwoText("");
@@ -76,4 +77,10 @@ const AddPoll = ({ dispatch }) => {
   );
 };
 
-export default connect()(AddPoll);
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser,
+  };
+}
+
+export default connect(mapStateToProps)(AddPoll);
