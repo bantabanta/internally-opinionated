@@ -3,11 +3,7 @@ import { connect } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser";
 
 const Navbar = (props) => {
-  const { users, authedUser } = props;
-
-  // console.group("Navbar Props");
-  // console.log(props);
-  // console.groupEnd();
+  const { authedUser } = props;
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -19,7 +15,7 @@ const Navbar = (props) => {
       <Link to="/" className="logo">
         <h1>I O</h1>
       </Link>
-      {props.authedUser !== null && (
+      {authedUser !== null && (
         <ul>
           <li>
             <Link to="/add">
@@ -31,7 +27,6 @@ const Navbar = (props) => {
               <span className="num">02.</span> Leaders
             </Link>
           </li>
-          {/* {props.authedUser !== null && ( */}
           <li className="logout">
             <button onClick={handleLogout}>Log Out</button>
           </li>
@@ -41,10 +36,9 @@ const Navbar = (props) => {
   );
 };
 
-const mapStateToProps = ({ authedUser, users }) => {
+const mapStateToProps = ({ authedUser }) => {
   return {
     authedUser,
-    users,
   };
 };
 

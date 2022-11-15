@@ -1,18 +1,13 @@
 import { connect } from "react-redux";
 import { useState } from "react";
 import { setAuthedUser } from "../actions/authedUser";
+import LoadingBar from "react-redux-loading-bar";
 
 const Login = (props) => {
   const [value, setValue] = useState("Select a User...");
   const disabled = value === "Select a User..." ? true : false;
 
-  // console.group("Login Props");
-  // console.log(props);
-  // console.log("value");
-  // console.log(value);
-  // console.groupEnd();
-
-  //TODO: styling
+  const { userIds, users, authedUser } = props;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,8 +19,6 @@ const Login = (props) => {
     setValue(e.target.value);
   };
 
-  const { userIds, users } = props;
-
   const userDropdown = userIds.map((userId) => {
     return (
       <option key={userId} value={userId}>
@@ -36,26 +29,29 @@ const Login = (props) => {
 
   return (
     <div className="content-wrapper poll">
-      <form onSubmit={handleSubmit}>
-        <h1>Welcome to Internally Opinionated!</h1>
-        <h3>Sign In</h3>
-        <select value={value} onChange={handleChange}>
-          <option>Select a User...</option>
-          {userDropdown}
-        </select>
-        <br></br>
-        <br></br>
-        <button disabled={disabled} type="submit">
-          Log In
-        </button>
-      </form>
+      {authedUser === null ? (
+        <form onSubmit={handleSubmit}>
+          <h1>Welcome to Internally Opinionated!</h1>
+          <h3>Sign In</h3>
+          <select value={value} onChange={handleChange}>
+            <option>Select a User...</option>
+            {userDropdown}
+          </select>
+          <br></br>
+          <br></br>
+          <button disabled={disabled} type="submit">
+            Log In
+          </button>
+        </form>
+      ) : null}
     </div>
   );
 };
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users, authedUser }) {
   return {
     userIds: Object.keys(users),
+    authedUser,
     users,
   };
 }

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const PollCardResult = (props) => {
   const { question, user } = props;

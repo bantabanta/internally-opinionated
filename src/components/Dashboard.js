@@ -9,6 +9,8 @@ const Dashboard = (props) => {
 
   const [activeTab, setActiveTab] = useState(1);
 
+  const { answeredQuestions, unansweredQuestions, users, authedUser } = props;
+
   const toggleTab = (tab) => {
     setActiveTab(tab);
   };
@@ -16,7 +18,7 @@ const Dashboard = (props) => {
   return (
     <div className="content-wrapper">
       <div className="welcome">
-        <h2>Oh hey there {props.users[props.authedUser].name}!</h2>
+        <h2>Oh hey there {users[authedUser].name}!</h2>
         <p>Vote on a poll or check out results from a previous vote</p>
       </div>
       <div className="tabs-wrapper">
@@ -37,7 +39,7 @@ const Dashboard = (props) => {
       <div className="content-tabs">
         <div className={activeTab === 1 ? "content active-content" : "content"}>
           <ul>
-            {props.unansweredQuestions.map((question) => (
+            {unansweredQuestions.map((question) => (
               <li key={question.id}>{<PollCardHome id={question.id} />}</li>
             ))}
           </ul>
@@ -47,7 +49,7 @@ const Dashboard = (props) => {
           className={activeTab === 2 ? "content  active-content" : "content"}
         >
           <ul>
-            {props.answeredQuestions.map((question) => (
+            {answeredQuestions.map((question) => (
               <li key={question.id}>{<PollCardHome id={question.id} />}</li>
             ))}
           </ul>

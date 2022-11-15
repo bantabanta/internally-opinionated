@@ -9,24 +9,21 @@ const AddPoll = (props) => {
   const [optionOneText, setOptionOneText] = useState("");
   const [optionTwoText, setOptionTwoText] = useState("");
 
+  const { dispatch, authedUser } = props;
+
   const handleOptionOneChange = (e) => {
     const text = e.target.value;
-
     setOptionOneText(text);
   };
 
   const handleOptionTwoChange = (e) => {
     const text = e.target.value;
-
     setOptionTwoText(text);
   };
-
-  const { dispatch, authedUser } = props;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(handleAddQuestion(optionOneText, optionTwoText, authedUser));
-
     setOptionOneText("");
     setOptionTwoText("");
     navigate("/");

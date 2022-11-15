@@ -6,7 +6,7 @@ const Leaderboard = (props) => {
   console.log(props);
   console.groupEnd();
 
-  const { authedUser, questions, sortedUsers } = props;
+  const { sortedUsers } = props;
 
   return (
     <div className="content-wrapper">
@@ -33,7 +33,7 @@ const Leaderboard = (props) => {
   );
 };
 
-const mapStateToProps = ({ questions, authedUser, users }) => {
+const mapStateToProps = ({ users }) => {
   const sortedUsers = Object.values(users)
     .map((user) => ({
       id: user.id,
@@ -48,8 +48,6 @@ const mapStateToProps = ({ questions, authedUser, users }) => {
 
   return {
     sortedUsers,
-    authedUser,
-    questions,
   };
 };
 

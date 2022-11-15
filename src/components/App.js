@@ -11,27 +11,24 @@ import Navbar from "./Navbar";
 import { Routes, Route } from "react-router-dom";
 
 function App(props) {
-  // console.group("App Props");
-  // console.log(props);
-  // console.groupEnd();
-
   useEffect(() => {
     props.dispatch(handleInitialData());
   }, []);
 
   return (
     <Fragment>
-      <Navbar />
       <div className="container">
+        <Navbar />
         {props.authedUser === null ? (
-          <Login />
+          <div>
+            <Login />
+          </div>
         ) : (
           <Routes>
             <Route path="/" exact element={<Dashboard />} />
             <Route path="/add" exact element={<AddPoll />} />
             <Route path="/question/:id" exact element={<PollPage />} />
             <Route path="/leaderboard" exact element={<Leaderboard />} />
-            <Route path="/question/404" exact element={<Error404 />} />
             <Route path="*" element={<Error404 />} />
           </Routes>
         )}
