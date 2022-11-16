@@ -2,10 +2,11 @@ import { connect } from "react-redux";
 import { handleAddAnswer } from "../actions/questions";
 import { useState } from "react";
 import Error404 from "./Error404";
+import { FormatDate } from "../utils/helpers";
 
 const PollCardQuestion = (props) => {
   const [selected, setSelected] = useState("");
-  const { question, authedUser, dispatch } = props;
+  const { users, question, authedUser, dispatch } = props;
 
   console.group("QuestionPage Props");
   console.log(props);
@@ -36,14 +37,33 @@ const PollCardQuestion = (props) => {
         <Error404 />
       ) : (
         <div>
-          <div className="welcome">
-            <h2>Cast Your Vote</h2>
-            <p>The results will appear after submission</p>
+          <div className="header">
+            <h1>Cast Your Vote</h1>
+            <p>The results of this poll will appear after you vote</p>
           </div>
-          <div className="poll">
-            <div className="poll-info">
-              <h3>In your internally opinionated opinion, would you rather:</h3>
+          <div className="card">
+            <div className="card-info">
+              <div className="card-top">
+                <img
+                  className="avatar"
+                  src={users[question.author].avatarURL}
+                  alt="user avatar"
+                />
+                <div className="content">
+                  {users[question.author] === users[authedUser] ? (
+                    <p>{`You`}</p>
+                  ) : (
+                    <p>{`${users[question.author].name}`}</p>
+                  )}
+                  <span>Asked on</span>
+                  <span>{FormatDate(question.timestamp)}</span>
+                </div>
+              </div>
+              <hr></hr>
+              <h3 className="text-standout">Would you rather</h3>
+              <br></br>
               <form onSubmit={handleSubmit}>
+                {/* <form onSubmit={handleSubmit}> */}
                 <div className="radio">
                   <label>
                     <input
@@ -56,9 +76,7 @@ const PollCardQuestion = (props) => {
                   </label>
                 </div>
                 <br></br>
-                <span>OR..</span>
-                <br></br>
-                <br></br>
+                {/* <h3>OR..</h3> */}
                 <div className="radio">
                   <label>
                     <input
@@ -71,9 +89,11 @@ const PollCardQuestion = (props) => {
                   </label>
                 </div>
                 <br></br>
-                <button type="submit" disabled={disabled}>
-                  Submit Vote
-                </button>
+                <div className="card-btn">
+                  <button type="submit" disabled={disabled}>
+                    Submit Vote
+                  </button>
+                </div>
               </form>
             </div>
           </div>

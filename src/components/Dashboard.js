@@ -17,8 +17,8 @@ const Dashboard = (props) => {
 
   return (
     <div className="content-wrapper">
-      <div className="welcome">
-        <h2>Oh hey there {users[authedUser].name}!</h2>
+      <div className="header">
+        <h1>Oh hey, {users[authedUser].name}!</h1>
         <p>Vote on a poll or check out results from a previous vote</p>
       </div>
       <div className="tabs-wrapper">

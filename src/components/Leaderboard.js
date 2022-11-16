@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { FormatDate } from "../utils/helpers";
 
 const Leaderboard = (props) => {
   console.group("Leaderboard Props");
@@ -10,25 +11,58 @@ const Leaderboard = (props) => {
 
   return (
     <div className="content-wrapper">
-      <div className="welcome">
-        <h2>Leaderboard</h2>
-        <p>See where you stack up against the opinionated</p>
+      <div className="header">
+        <h1>Leaderboard</h1>
+        <p>See where you stack up against the opinionated.</p>
       </div>
       <ul>
         {sortedUsers.map((user) => (
-          <li key={user.id} className="poll poll-info">
-            <div className="poll-info">
-              <p>{user.name}</p>
-              <p>Answered Polls: {user.numAnswers}</p>
-              <p>Polls Created: {user.numQuestions}</p>
-              <p>Total: {user.numAnswers + user.numQuestions}</p>
+          <li key={user.id} className="card">
+            <div className="card-info">
+              <div className="card-top">
+                <img
+                  className="avatar"
+                  src={user.avatarURL}
+                  alt="user avatar"
+                />
+                <div className="">
+                  {user === props.authedUser ? (
+                    <p>{`You`}</p>
+                  ) : (
+                    <p>{`${user.name}`}</p>
+                  )}
+                </div>
+                <h3>
+                  Score -{" "}
+                  <span className="text-standout">
+                    0{user.numAnswers + user.numQuestions}
+                  </span>
+                </h3>
+              </div>
+              <hr></hr>
+              <h3>
+                Answered Polls -{" "}
+                <span className="text-standout">0{user.numAnswers}</span>
+              </h3>
+              <h3>
+                Created Polls -{" "}
+                <span className="text-standout">0{user.numQuestions}</span>
+              </h3>
+              <h3>
+                {/* Score -{" "}
+                <span className="text-standout">
+                  0{user.numAnswers + user.numQuestions}
+                </span> */}
+              </h3>
             </div>
           </li>
         ))}
+        <div className="card-btn">
+          <Link to="/">
+            <button>Back to Home</button>
+          </Link>
+        </div>
       </ul>
-      <Link to="/" className="logo">
-        <button>Back to Home</button>
-      </Link>
     </div>
   );
 };
@@ -38,6 +72,7 @@ const mapStateToProps = ({ users }) => {
     .map((user) => ({
       id: user.id,
       name: user.name,
+      avatarURL: user.avatarURL,
       numAnswers: Object.values(user.answers).length,
       numQuestions: Object.values(user.questions).length,
       total:

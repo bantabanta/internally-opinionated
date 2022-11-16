@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import { useState } from "react";
 import { setAuthedUser } from "../actions/authedUser";
-import LoadingBar from "react-redux-loading-bar";
 
 const Login = (props) => {
   const [value, setValue] = useState("Select a User...");
@@ -28,22 +27,29 @@ const Login = (props) => {
   });
 
   return (
-    <div className="content-wrapper poll">
-      {authedUser === null ? (
-        <form onSubmit={handleSubmit}>
-          <h1>Welcome to Internally Opinionated!</h1>
-          <h3>Sign In</h3>
-          <select value={value} onChange={handleChange}>
+    <div className="content-wrapper center">
+      <div className="header">
+        <h1 className="text-standout">Internally Opinionated</h1>
+        <p>Ask colleagues questions and vote on popular polls.</p>
+      </div>
+      <div className="card log-in">
+        <form className="" onSubmit={handleSubmit}>
+          <h3>Sign In to your account</h3>
+          <select
+            style={{ width: "200px" }}
+            value={value}
+            onChange={handleChange}
+          >
             <option>Select a User...</option>
             {userDropdown}
           </select>
-          <br></br>
+          {/* <br></br> */}
           <br></br>
           <button disabled={disabled} type="submit">
             Log In
           </button>
         </form>
-      ) : null}
+      </div>
     </div>
   );
 };

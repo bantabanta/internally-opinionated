@@ -27,7 +27,7 @@ const Navbar = (props) => {
               <span className="num">02.</span> Leaders
             </Link>
           </li>
-          <li className="logout">
+          <li>
             <button onClick={handleLogout}>Log Out</button>
           </li>
         </ul>

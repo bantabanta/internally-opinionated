@@ -9,7 +9,7 @@ const AddPoll = (props) => {
   const [optionOneText, setOptionOneText] = useState("");
   const [optionTwoText, setOptionTwoText] = useState("");
 
-  const { dispatch, authedUser } = props;
+  const { dispatch, authedUser, users } = props;
 
   const handleOptionOneChange = (e) => {
     const text = e.target.value;
@@ -31,52 +31,57 @@ const AddPoll = (props) => {
 
   return (
     <div className="content-wrapper">
-      <div className="welcome">
-        <h2>Create A Poll</h2>
-        <p>Whats been keeping you up at night?</p>
+      <div className="header">
+        <h1>Create A Poll</h1>
+        <p>Whats on your mind today {users[authedUser].name.split(" ")[0]}?</p>
       </div>
-      <div className="poll poll-info">
-        <br></br>
-        <div>Would my colleagues rather:</div>
-        <br></br>
-        <form className="new-poll" onSubmit={handleSubmit}>
-          <input
-            placeholder="Enter option one.."
-            value={optionOneText}
-            onChange={handleOptionOneChange}
-            className="input"
-            maxLength={80}
-          />
+      <div className="card">
+        <div className="card-info">
+          <h3>Would my colleagues rather:</h3>
           <br></br>
-          <br></br>
-          <div>OR</div>
-          <br></br>
-          <input
-            placeholder="Enter option two.."
-            value={optionTwoText}
-            onChange={handleOptionTwoChange}
-            className="input"
-            maxLength={80}
-          />
-          <br></br>
-          <br></br>
-          {/* {tweetLeft <= 100 && <div className="tweet-length">{tweetLeft}</div>} */}
-          <button
-            className="btn"
-            type="submit"
-            disabled={optionOneText === "" || optionTwoText === ""}
-          >
-            Submit
-          </button>
-        </form>
+          <form className="new-poll" onSubmit={handleSubmit}>
+            <input
+              size="40"
+              placeholder="Enter the first option.."
+              value={optionOneText}
+              onChange={handleOptionOneChange}
+              className="input"
+              maxLength={80}
+            />
+            <br></br>
+            <br></br>
+            <div className="text-standout">OR</div>
+            <br></br>
+            <input
+              size="40"
+              placeholder="Enter the second option.."
+              value={optionTwoText}
+              onChange={handleOptionTwoChange}
+              className="input"
+              maxLength={80}
+            />
+            <br></br>
+            <br></br>
+            {/* {tweetLeft <= 100 && <div className="tweet-length">{tweetLeft}</div>} */}
+            <div className="card-btn">
+              <button
+                type="submit"
+                disabled={optionOneText === "" || optionTwoText === ""}
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
 };
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, users }) {
   return {
     authedUser,
+    users,
   };
 }
 
