@@ -43,19 +43,19 @@ const PollCardQuestion = (props) => {
           </div>
           <div className="card">
             <div className="card-info">
-              <div className="card-top">
+              <div className="card-header">
                 <img
                   className="avatar"
                   src={users[question.author].avatarURL}
                   alt="user avatar"
                 />
                 <div className="content">
+                  <p>{`${users[question.author].name}`}</p>
                   {users[question.author] === users[authedUser] ? (
-                    <p>{`You`}</p>
+                    <span>{`You asked on`}</span>
                   ) : (
-                    <p>{`${users[question.author].name}`}</p>
+                    <span>Asked on</span>
                   )}
-                  <span>Asked on</span>
                   <span>{FormatDate(question.timestamp)}</span>
                 </div>
               </div>
@@ -63,7 +63,6 @@ const PollCardQuestion = (props) => {
               <h3 className="text-standout">Would you rather</h3>
               <br></br>
               <form onSubmit={handleSubmit}>
-                {/* <form onSubmit={handleSubmit}> */}
                 <div className="radio">
                   <label>
                     <input

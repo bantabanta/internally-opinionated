@@ -7,21 +7,21 @@ const PollCardHome = (props) => {
 
   return (
     <Link to={`/question/${question.id}`} id={question.id}>
-      <div className="card">
+      <div className="card home">
         <div className="card-info">
-          <div className="card-top">
+          <div className="card-header">
             <img
               className="avatar"
               src={users[question.author].avatarURL}
               alt="user avatar"
             />
             <div className="content">
+              <p>{`${users[question.author].name}`}</p>
               {users[question.author] === users[authedUser] ? (
-                <p>{`You`}</p>
+                <span>{`You asked on`}</span>
               ) : (
-                <p>{`${users[question.author].name}`}</p>
+                <span>Asked on</span>
               )}
-              <span>Asked on</span>
               <span>{FormatDate(question.timestamp)}</span>
             </div>
           </div>

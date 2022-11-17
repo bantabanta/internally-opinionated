@@ -23,47 +23,65 @@ const PollCardResult = (props) => {
       </div>
       <div className="card">
         <div className="card-info">
-          <div className="card-top">
+          <div className="card-header">
             <img
               className="avatar"
               src={users[question.author].avatarURL}
               alt="user avatar"
             />
             <div className="content">
+              <p>{`${users[question.author].name}`}</p>
               {users[question.author] === users[authedUser] ? (
-                <p>{`You`}</p>
+                <span>{`You asked on`}</span>
               ) : (
-                <p>{`${users[question.author].name}`}</p>
+                <span>Asked on</span>
               )}
-              <span>Asked on</span>
               <span>{FormatDate(question.timestamp)}</span>
             </div>
           </div>
-          <hr></hr>
-          <h3>
-            {answer === "optionOne" && (
-              <span className="text-standout">Your Vote - </span>
-            )}
-            {question.optionOne.text}
-          </h3>
-          <p>
-            {((votes[0] / voteSum) * 100).toFixed(0)}% : {votes[0]} out of{" "}
-            {voteSum} votes
-          </p>
-          <h3>
-            {answer === "optionTwo" && (
-              <span className="text-standout">Your vote: </span>
-            )}
-            {question.optionTwo.text}
-          </h3>
-          <p>
-            {((votes[1] / voteSum) * 100).toFixed(0)}% : {votes[1]} out of{" "}
-            {voteSum} votes
-          </p>
-          <div className="card-btn">
-            <Link to="/">
-              <button>Back to Home</button>
-            </Link>
+          <div className="card-content">
+            <hr></hr>
+            <h3>
+              {answer === "optionOne" && (
+                <span className="text-standout">You voted to </span>
+              )}
+              {question.optionOne.text}
+            </h3>
+            <p>
+              {votes[0]} of {voteSum} votes
+            </p>
+            <div
+              className="percent-bar"
+              style={{
+                "--width": `${((votes[0] / voteSum) * 100).toFixed(0)}%`,
+              }}
+              data-label={`${((votes[0] / voteSum) * 100).toFixed(0)}%`}
+            ></div>
+
+            {/* <br></br> */}
+            <h3>
+              {answer === "optionTwo" && (
+                <span className="text-standout">You voted to </span>
+              )}
+              {question.optionTwo.text}
+            </h3>
+            <p>
+              {votes[1]} of {voteSum} votes
+            </p>
+            <div
+              className="percent-bar"
+              style={{
+                "--width": `${((votes[1] / voteSum) * 100).toFixed(0)}%`,
+              }}
+              data-label={`${((votes[1] / voteSum) * 100).toFixed(0)}%`}
+            ></div>
+
+            <br></br>
+            <div className="card-btn">
+              <Link to="/">
+                <button>Back to Home</button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

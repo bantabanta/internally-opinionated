@@ -6,7 +6,7 @@ const Login = (props) => {
   const [value, setValue] = useState("Select a User...");
   const disabled = value === "Select a User..." ? true : false;
 
-  const { userIds, users, authedUser } = props;
+  const { userIds, users } = props;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,6 +35,7 @@ const Login = (props) => {
       <div className="card log-in">
         <form className="" onSubmit={handleSubmit}>
           <h3>Sign In to your account</h3>
+          <br></br>
           <select
             style={{ width: "200px" }}
             value={value}
@@ -43,9 +44,8 @@ const Login = (props) => {
             <option>Select a User...</option>
             {userDropdown}
           </select>
-          {/* <br></br> */}
           <br></br>
-          <button disabled={disabled} type="submit">
+          <button style={{ width: "205px" }} disabled={disabled} type="submit">
             Log In
           </button>
         </form>

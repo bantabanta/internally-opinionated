@@ -23,11 +23,20 @@ const AddPoll = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(handleAddQuestion(optionOneText, optionTwoText, authedUser));
+    dispatch(
+      handleAddQuestion(
+        optionOneText.toLowerCase(),
+        optionTwoText.toLowerCase(),
+        authedUser
+      )
+    );
     setOptionOneText("");
     setOptionTwoText("");
     navigate("/");
   };
+
+  const pollLeft1 = 80 - optionOneText.length;
+  const pollLeft2 = 80 - optionTwoText.length;
 
   return (
     <div className="content-wrapper">
@@ -37,38 +46,46 @@ const AddPoll = (props) => {
       </div>
       <div className="card">
         <div className="card-info">
-          <h3>Would my colleagues rather:</h3>
+          <h3 className="center text-standout">Would you rather</h3>
           <br></br>
           <form className="new-poll" onSubmit={handleSubmit}>
-            <input
+            {pollLeft1 <= 40 && <div className="poll-length">{pollLeft1}</div>}
+            <textarea
+              style={{ width: "80%", height: "3rem" }}
               size="40"
-              placeholder="Enter the first option.."
+              placeholder="Enter the first option..."
               value={optionOneText}
               onChange={handleOptionOneChange}
               className="input"
               maxLength={80}
             />
             <br></br>
+            <div className="divider">
+              <div className="divide-line">
+                <hr></hr>
+              </div>
+              <div>OR</div>
+              <div className="divide-line">
+                <hr></hr>
+              </div>
+            </div>
             <br></br>
-            <div className="text-standout">OR</div>
-            <br></br>
-            <input
-              size="40"
-              placeholder="Enter the second option.."
+            {pollLeft2 <= 40 && <div className="poll-length">{pollLeft2}</div>}
+            <textarea
+              style={{ width: "80%", height: "3rem" }}
+              placeholder="Enter the second option..."
               value={optionTwoText}
               onChange={handleOptionTwoChange}
               className="input"
               maxLength={80}
             />
             <br></br>
-            <br></br>
-            {/* {tweetLeft <= 100 && <div className="tweet-length">{tweetLeft}</div>} */}
             <div className="card-btn">
               <button
                 type="submit"
                 disabled={optionOneText === "" || optionTwoText === ""}
               >
-                Submit
+                Add Poll
               </button>
             </div>
           </form>

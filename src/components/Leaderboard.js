@@ -18,8 +18,8 @@ const Leaderboard = (props) => {
       <ul>
         {sortedUsers.map((user) => (
           <li key={user.id} className="card">
-            <div className="card-info">
-              <div className="card-top">
+            <div className="card-info leaderboard">
+              <div className="card-sidebar">
                 <img
                   className="avatar"
                   src={user.avatarURL}
@@ -32,14 +32,7 @@ const Leaderboard = (props) => {
                     <p>{`${user.name}`}</p>
                   )}
                 </div>
-                <h3>
-                  Score -{" "}
-                  <span className="text-standout">
-                    0{user.numAnswers + user.numQuestions}
-                  </span>
-                </h3>
               </div>
-              <hr></hr>
               <h3>
                 Answered Polls -{" "}
                 <span className="text-standout">0{user.numAnswers}</span>
@@ -48,12 +41,14 @@ const Leaderboard = (props) => {
                 Created Polls -{" "}
                 <span className="text-standout">0{user.numQuestions}</span>
               </h3>
-              <h3>
-                {/* Score -{" "}
-                <span className="text-standout">
-                  0{user.numAnswers + user.numQuestions}
-                </span> */}
-              </h3>
+              <div>
+                <h3>
+                  Score -{" "}
+                  <span className="text-standout">
+                    0{user.numAnswers + user.numQuestions}
+                  </span>
+                </h3>
+              </div>
             </div>
           </li>
         ))}
