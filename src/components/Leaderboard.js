@@ -19,35 +19,36 @@ const Leaderboard = (props) => {
         {sortedUsers.map((user) => (
           <li key={user.id} className="card">
             <div className="card-info leaderboard">
-              <div className="card-sidebar">
+              <div className="leaderboard-sidebar">
                 <img
-                  className="avatar"
+                  className="leaderboard-avatar"
                   src={user.avatarURL}
                   alt="user avatar"
                 />
                 <div className="">
-                  {user === props.authedUser ? (
-                    <p>{`You`}</p>
-                  ) : (
-                    <p>{`${user.name}`}</p>
-                  )}
+                  <h4>{`${user.name}`}</h4>
                 </div>
               </div>
-              <h3>
-                Answered Polls -{" "}
-                <span className="text-standout">0{user.numAnswers}</span>
-              </h3>
-              <h3>
-                Created Polls -{" "}
-                <span className="text-standout">0{user.numQuestions}</span>
-              </h3>
-              <div>
-                <h3>
-                  Score -{" "}
-                  <span className="text-standout">
-                    0{user.numAnswers + user.numQuestions}
-                  </span>
-                </h3>
+              <div className="leaderboard-content">
+                <p>
+                  <span className="text-standout">{user.numAnswers} </span>
+                  Answered Polls{" "}
+                </p>
+                <hr></hr>
+                <p>
+                  <span className="text-standout">{user.numQuestions} </span>
+                  Created Polls{" "}
+                </p>
+              </div>
+              <div className="leaderboard-score">
+                <div id="score-bubble">
+                  <h1>
+                    <span className="text-standout">
+                      0{user.numAnswers + user.numQuestions}
+                    </span>
+                  </h1>
+                </div>
+                <h4>Points</h4>
               </div>
             </div>
           </li>
