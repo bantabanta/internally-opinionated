@@ -6,7 +6,7 @@ const PollCardHome = (props) => {
   const { users, question, authedUser } = props;
 
   return (
-    <Link to={`/question/${question.id}`} id={question.id}>
+    <Link to={`/questions/${question.id}`} id={question.id}>
       <div className="card home">
         <div className="card-info">
           <div className="card-header">
